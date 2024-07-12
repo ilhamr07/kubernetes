@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx-with-annotation
+  labels:
+    team: IT-BJNG
+    verison: 1.4.5
+    environment: production
+  annotations:
+    description: ini adalah aplikasi yang dibuat oleh tim IT-BJNG
+spec:
+  containers:
+  - name: nginx
+    image: nginx
+    ports:
+      - containerPort: 80

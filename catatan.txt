@@ -1,0 +1,56 @@
+node adalah worker machine di kubernetes
+node bisa bentuknya vm atau mesin fisik
+
+melihat semua node di cluster
+ kubectl get node
+
+melihat detail node
+    kubectl describe node docker-desktop/namanode
+
+pod 
+- pod adalah unit terkceil yang bisa dideploy di kubernetes cluster
+- pod berisi satu atau lebih container
+- secara sederjana pod adalah aplikasi yg dirunning kube cluster
+
+melihat semua pod
+    kubectl get pod
+
+    #melihat secara detail
+    kubectl get pod -o wide 
+
+    kubectl describe pod nginx 
+
+    kubectl get pods -n 
+
+akses pod
+    kubectl port-forward nginx 8888:80
+
+membuat pod 
+    kubectl create -f filepod.yaml
+    kubectl create -f nginx.yaml
+
+menghapus pod
+    kubectl delete pod namapod
+    
+    menghapis pod didalam namespace
+    kubectl delete pod --all --namespace sti
+
+label
+    memberikan informasi tambahan kedalam pod
+    kubectl get pod --show-labels
+
+    nambah label 
+    kubectl.exe label pod nginx environmen=development 
+    kubectl.exe label pod nginx environmen=development --overwrite
+
+namespace
+    melihat semua namespaec
+        kubectl get namespace 
+
+    melihat isi pode didalam namespace
+        kubectl get pods --namespace (namanamespace)
+
+    membuat pod di namespace
+        kubectl create -f namafilpod --namespace namanamespace
+
+probe
