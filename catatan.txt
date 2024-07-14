@@ -53,4 +53,14 @@ namespace
     membuat pod di namespace
         kubectl create -f namafilpod --namespace namanamespace
 
-probe
+replication controller
+    kubectl get rc
+
+daemon set
+
+
+*yang sering digunakan
+    - kubectl create -f nama-file 
+    - kubectl get pod 
+    - kubectl get nama-jenisnya(rs , rc, daemonset)
+    
