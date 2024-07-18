@@ -58,9 +58,9 @@ replication controller
 
 daemon set
 
+job
 
 *yang sering digunakan
     - kubectl create -f nama-file 
     - kubectl get pod 
     - kubectl get nama-jenisnya(rs , rc, daemonset)
-    
