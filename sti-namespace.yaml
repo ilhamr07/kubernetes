@@ -1,4 +1,11 @@
 apiVersion: v1
 kind: Namespace
 metadata:
-  name:  sti
+  name:  sti-prod
+
+---
+
+apiVersion: v1
+kind: Namespace
+metadata:
+  name:  sti-dev
