@@ -4,7 +4,7 @@ metadata:
   name: nginx-with-label
   labels:
     team: IT-JANCOK
-    verison: 1.4.5
+    verison: 1.4.6
     environment: production
 spec:
   containers:

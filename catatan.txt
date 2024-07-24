@@ -43,6 +43,9 @@ label
     kubectl.exe label pod nginx environmen=development 
     kubectl.exe label pod nginx environmen=development --overwrite
 
+annotation
+    mirip dengan label hanya tidak dapat di filter seperti label
+
 namespace
     melihat semua namespaec
         kubectl get namespace 
@@ -63,4 +66,6 @@ job
 *yang sering digunakan
     - kubectl create -f nama-file 
     - kubectl get pod 
+    - kubectl port-forward pod/podname portforward:portcontainer
     - kubectl get nama-jenisnya(rs , rc, daemonset)
+    - kubectl apply -f deployment.yaml
