@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: nginx-replica-sets
+  labels:
+    app: nginx-replica-set
+spec:
+  # modify replicas according to your case
+  replicas: 3
+  selector:
+    matchLabels:
+      app: nginx-replica-set
+  template:
+    metadata:
+      labels:
+        app: nginx-replica-set
+    spec:
+      containers:
+      - name: nginx-replica-set
+        image: nginx
+        ports:
+        # - name: web
+          - containerPort:  80
+      #     protocol: TCP
+      #   env:
+      #   - name: NGX_VERSION
+      #     value: 1.16.1
+      #   volumeMounts:
+      #   - name: localtime
+      #     mountPath: /etc/localtime
+      # volumes:
+      #   - name: localtime
+      #     hostPath:
+      #       path: /usr/share/zoneinfo/Asia/Shanghai

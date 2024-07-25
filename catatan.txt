@@ -31,7 +31,11 @@ membuat pod
 
 menghapus pod
     kubectl delete pod namapod
+    kubectl delete pod namapod1 namapod2 namapod3
     
+    menghapus berdasarkan label
+    kubectl delete pod -l environmen=development
+
     menghapis pod didalam namespace
     kubectl delete pod --all --namespace sti
 
@@ -55,6 +59,12 @@ namespace
 
     membuat pod di namespace
         kubectl create -f namafilpod --namespace namanamespace
+    
+    menghapus pod di namespace
+
+Probe
+    probe digunakan untuk memeriksa status kontainer
+
 
 replication controller
     kubectl get rc
@@ -69,3 +79,4 @@ job
     - kubectl port-forward pod/podname portforward:portcontainer
     - kubectl get nama-jenisnya(rs , rc, daemonset)
     - kubectl apply -f deployment.yaml
+    - kubectl get pod --show-labels

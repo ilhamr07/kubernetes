@@ -5,7 +5,7 @@ metadata:
   labels:
     team: IT-BJNG
     verison: 1.4.5
-    environment: production
+    environment: development
   annotations:
     description: ini adalah aplikasi yang dibuat oleh tim IT-BJNG
 spec:

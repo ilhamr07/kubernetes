@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: nginx-rs-match-label
+  labels:
+    app: nginx-rs-match-label
+spec:
+  # modify replicas according to your case
+  replicas: 3
+  selector:
+    matchExpressions:
+      - key: app
+        operator: In
+        values:
+          - nginx-rs-match-label
+      - key: env
+        operator: In
+        values:
+          - production
+          - dev
+          - qa
+  template:
+    metadata:
+      labels:
+        app: nginx-rs-match-label
+        env: dev
+    spec:
+      containers:
+      - name: nginx-rs-match-label
+        image: nginx
+        ports:
+        # - name: web
+          - containerPort:  80
+      #     protocol: TCP
+      #   env:
+      #   - name: NGX_VERSION
+      #     value: 1.16.1
+      #   volumeMounts:
+      #   - name: localtime
+      #     mountPath: /etc/localtime
+      # volumes:
+      #   - name: localtime
+      #     hostPath:
+      #       path: /usr/share/zoneinfo/Asia/Shanghai
