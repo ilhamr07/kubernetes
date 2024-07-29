@@ -66,10 +66,11 @@ Probe
     probe digunakan untuk memeriksa status kontainer
 
 
-replication controller
+replication set
     kubectl get rc
 
 daemon set
+    digunakan untuk menjalankan pod disemua node yang ada
 
 job
 
@@ -80,3 +81,4 @@ job
     - kubectl get nama-jenisnya(rs , rc, daemonset)
     - kubectl apply -f deployment.yaml
     - kubectl get pod --show-labels
+    - kubectl get all
