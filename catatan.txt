@@ -82,3 +82,4 @@ job
     - kubectl apply -f deployment.yaml
     - kubectl get pod --show-labels
     - kubectl get all
+    - kubectl delete all --all
