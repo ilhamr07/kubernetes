@@ -83,3 +83,5 @@ job
     - kubectl get pod --show-labels
     - kubectl get all
     - kubectl delete all --all
+    - kubectl exec -it curl -- /bin/sh
+    - 
