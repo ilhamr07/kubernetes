@@ -70,7 +70,9 @@ replication set
     kubectl get rc
 
 daemon set
-    digunakan untuk menjalankan pod disemua node yang ada
+    digunakan untuk menjalankan pod disemua node yang ada, 
+    kalau ada 2 nodes berarti akan dibuatkan 2 pod,
+    1 node 1 pod
 
 job
 
