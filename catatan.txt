@@ -74,7 +74,8 @@ daemon set
     kalau ada 2 nodes berarti akan dibuatkan 2 pod,
     1 node 1 pod
 
-job
+env
+    untuk menambahkan env di pod
 
 *yang sering digunakan
     - kubectl create -f nama-file 
