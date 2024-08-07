@@ -1,0 +1,50 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name:  nginx-app-readiness
+  namespace: default
+  labels:
+    app:  nginx-app-readiness
+spec:
+  selector:
+    matchLabels:
+      app: nginx-app-readiness
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app:  nginx-app-readiness
+    spec:
+      # initContainers:
+        # Init containers are exactly like regular containers, except:
+          # - Init containers always run to completion.
+          # - Each init container must complete successfully before the next one starts.
+      containers:
+      - name:  nginx-app-readiness
+        image:  nginx:alpine
+        resources:
+          limits:
+            cpu: 100m
+            memory: 100Mi
+        ports:
+        - containerPort: 80
+        readinessProbe:
+        #check awalan pod/container sudah running atau belum
+          httpGet:
+            path: / #
+            port: 80
+          initialDelaySeconds: 5 #tunggu 5detik diawal sebelum melakukan probe
+          failureThreshold: 5 # berapa banyak error/failure yang ditoleransi
+          periodSeconds: 10 #interval check
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx-app-readiness
+spec:
+  selector:
+    app: nginx-app-readiness
+  ports:
+  - port: 80
+    targetPort: 80

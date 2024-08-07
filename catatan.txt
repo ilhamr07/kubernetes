@@ -87,4 +87,4 @@ env
     - kubectl get all
     - kubectl delete all --all
     - kubectl exec -it curl -- /bin/sh
-    - 
+    - kubectl describe pod namapod
