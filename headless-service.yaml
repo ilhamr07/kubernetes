@@ -1,0 +1,53 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name:  example-app-liveness
+  namespace: default
+  labels:
+    app:  example-app-liveness
+spec:
+  selector:
+    matchLabels:
+      app: example-app-liveness
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app:  example-app-liveness
+    spec:
+      # initContainers:
+        # Init containers are exactly like regular containers, except:
+          # - Init containers always run to completion.
+          # - Each init container must complete successfully before the next one starts.
+      containers:
+      - name:  example-app-liveness
+        image:  rahadiangg/k8s-etc:liveness
+        env: 
+         - name:  THRESHOLD
+           value: "20"
+        resources:
+          limits:
+            cpu: 100m
+            memory: 100Mi
+        ports:
+        - containerPort: 8080
+        livenessProbe:
+        #check awalan pod/container sudah running atau belum
+          httpGet:
+            path: /healthz #
+            port: 8080
+          initialDelaySeconds: 5 #tunggu 5detik diawal sebelum melakukan probe
+          failureThreshold: 5 # berapa banyak error/failure yang ditoleransi
+          periodSeconds: 10 #interval check
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: example-app-liveness
+spec:
+  selector:
+    app: example-app-liveness
+  ports:
+  - port: 80
+    targetPort: 80
