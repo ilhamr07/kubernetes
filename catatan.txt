@@ -88,3 +88,5 @@ env
     - kubectl delete all --all
     - kubectl exec -it curl -- /bin/sh
     - kubectl describe pod namapod
+    - kubectl scale deployment --replicas 5 namapod
+    - kubectl describe ep nginx-app-readiness
