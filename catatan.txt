@@ -89,4 +89,6 @@ env
     - kubectl exec -it curl -- /bin/sh
     - kubectl describe pod namapod
     - kubectl scale deployment --replicas 5 namapod
-    - kubectl describe ep nginx-app-readiness
+    - kubectl describe pod nginx-app-readiness
+    - kubectl run --rm -it debug-contianer --image=gcr.io/kubernetes-e2e-test-images/dnsutils:1.3 --restart=Never nslookup nginx-headless 
+    - kubectl get pod -o wide
