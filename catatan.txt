@@ -77,6 +77,9 @@ daemon set
 env
     untuk menambahkan env di pod
 
+statefullset
+
+
 *yang sering digunakan
     - kubectl create -f nama-file 
     - kubectl get pod 
@@ -92,3 +95,4 @@ env
     - kubectl describe pod nginx-app-readiness
     - kubectl run --rm -it debug-contianer --image=gcr.io/kubernetes-e2e-test-images/dnsutils:1.3 --restart=Never nslookup nginx-headless 
     - kubectl get pod -o wide
+    - kubectl get sc 

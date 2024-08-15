@@ -1,0 +1,71 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: pvc-sc
+  namespace: default
+  labels:
+    app: pvc-storage-class
+spec:
+  storageClassName: standard #sesuaikan storage class yang ada
+  accessModes:
+  - ReadWriteOnce
+  resources:
+    requests:
+      storage: 2Gi
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name:  nginx-sc
+  namespace: default
+  labels:
+    app:  nginx-sc
+spec:
+  selector:
+    matchLabels:
+      app: nginx-sc
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app:  nginx-sc
+    spec:
+      #panggil pvc di volumes
+      volumes:
+        - name: pvc-sc-volume
+          persistentVolumeClaim:
+            claimName: pvc-sc #nama pvc
+      containers:
+      - name:  nginx-sc
+        image:  nginx:alpine
+        resources:
+          limits:
+            cpu: 100m
+            memory: 100Mi
+        ports:
+        - containerPort:  80
+        #pvc yang sudah di panggil di volumes, panggil disini
+        #untuk mengarahkan path di container
+        volumeMounts:
+          - mountPath: /usr/share/nginx/html
+            name: pvc-sc-volume
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx-sc
+spec:
+  selector:
+    app: nginx-sc
+  ports:
+  - port: 80
+    targetPort: 80
+
+
+### kubectl exec -it pods/namapod -- /bin/sh -c "echo 'hallo guys' > /usr/share/nginx/html/index.html"
+### kubectl port-forward pod/podname portforward:portcontainer
+###
